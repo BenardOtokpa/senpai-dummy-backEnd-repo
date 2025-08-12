@@ -39,7 +39,8 @@ app.post("/posts", async (req, res) => {
 
   const newPost = {
     ...postData,
-    id: `${maxId + 1}`, // Increment the highest ID by 1
+   id: String(maxId + 1),            // sequential id
+    createdAt: new Date().toISOString()
   };
   const updatedPosts = [newPost, ...existingPosts];
   await storePosts(updatedPosts);
